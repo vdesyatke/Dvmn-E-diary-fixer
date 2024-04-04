@@ -52,6 +52,7 @@ child = find_schoolkid('Иванов Демьян')
 Возьмём ученицу похуже - с двойками, с замечаниями и без похвал.
 
 Было:
+
 ![image](https://github.com/vdesyatke/Dvmn-E-diary-fixer/assets/72273263/a252ce55-7c8b-442a-9398-8578aeb8b315)
 
 Запускаем магию:
@@ -69,6 +70,7 @@ fix_marks(child)
 
 ### Удалить замечания
 **Функция удаляет все замечания ученика**.
+
 А у Элеоноры их целый букет:
 ![image](https://github.com/vdesyatke/Dvmn-E-diary-fixer/assets/72273263/8e0fd01f-1994-4cc4-9aea-4b18aa7219c9)
 Исправляем:
