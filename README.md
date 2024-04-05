@@ -102,8 +102,13 @@ create_commendation(child)
 ```
 Можно создать похвалу на конкретном предмете:
 ```
-create_commendation(child, 'Математика') 
-Создал похвалу для этого ученика на уроке Математика 6А, 2018-10-29
+ create_commendation(child, 'Математика')   
+Создал похвалу для этого ученика на уроке Математика 5В, 2019-04-08
 ```
 
 ## 5. Что это за проект?
+Проект создан для исправления оценок в электронном дневнике https://github.com/devmanorg/e-diary
+
+## 6. Могу я доработать проект?
+Проект лицензирован под лицензией MIT, вы можете дорабатывать проект для своих нужд.
+Для этого [сделайте форк](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) оригинального [проекта](https://github.com/devmanorg/e-diary), положите мой файл `scripts.py` в ту же папку, где находится `manage.py`.
