@@ -105,14 +105,17 @@ create_commendation(child)
  create_commendation(child, 'Математика')   
 Создал похвалу для этого ученика на уроке Математика 5В, 2019-04-08
 ```
+Стало:
+![image](https://github.com/vdesyatke/Dvmn-E-diary-fixer/assets/72273263/006dbbe3-7840-49f4-a509-751bd89856e4)
+
 
 ## 5. Что это за проект?
 Проект создан для исправления оценок в электронном дневнике https://github.com/devmanorg/e-diary
 Это учебный проект!
 
 ## 6. Могу я доработать проект?
-Проект лицензирован под лицензией MIT, вы можете дорабатывать проект для своих нужд.
-Для этого [сделайте форк](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) оригинального [проекта](https://github.com/devmanorg/e-diary), положите мой файл `scripts.py` в ту же папку, где находится `manage.py`.
+Проект лицензирован под лицензией MIT, ты можешь дорабатывать проект для своих нужд.
+Для этого [сделай форк](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) оригинального [проекта](https://github.com/devmanorg/e-diary), положите мой файл `scripts.py` в ту же папку, где находится `manage.py`.
 Запусти сервер командой
 ```python manage.py runserver 127.0.0.1:8000```
 Открой сайт в браузере на адресе `https://127.0.0.1:8000`, исправь код в `scripts.py` на свой вкус, внеси скриптом изменения в дневник, как описано в пунктах 4.1 - 4.3, проверь изменения в браузере.
