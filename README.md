@@ -97,12 +97,12 @@ _Молодец! Отлично! Хорошо! Гораздо лучше! Вел
 ![image](https://github.com/vdesyatke/Dvmn-E-diary-fixer/assets/72273263/f70b464c-11dc-49d5-89ac-1cf90ec3cf98)
 Команда:
 ```
-create_commendation(child)
+add_commendation(child)
 Создал похвалу для этого ученика на уроке Технология 5В, 2018-10-23
 ```
 Можно создать похвалу на конкретном предмете:
 ```
- create_commendation(child, 'Математика')   
+add_commendation(child, 'Математика')   
 Создал похвалу для этого ученика на уроке Математика 5В, 2019-04-08
 ```
 Стало:
