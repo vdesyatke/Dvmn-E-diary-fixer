@@ -115,7 +115,9 @@ add_commendation(child, 'Математика')
 
 ## 6. Могу я доработать проект?
 Проект лицензирован под лицензией MIT, ты можешь дорабатывать проект для своих нужд.
-Для этого [сделай форк](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) оригинального [проекта](https://github.com/devmanorg/e-diary), положите мой файл `scripts.py` в ту же папку, где находится `manage.py`.
+Для этого [сделай форк](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) оригинального [проекта](https://github.com/devmanorg/e-diary), положи мой файл `scripts.py` в ту же папку, где находится `manage.py`.
 Запусти сервер командой
-```python manage.py runserver 127.0.0.1:8000```
-Открой сайт в браузере на адресе `https://127.0.0.1:8000`, исправь код в `scripts.py` на свой вкус, внеси скриптом изменения в дневник, как описано в пунктах 4.1 - 4.3, проверь изменения в браузере.
+```python
+python manage.py runserver 127.0.0.1:8000
+```
+Открой сайт в браузере на адресе [https://127.0.0.1:8000](https://127.0.0.1:8000), исправь код в `scripts.py` на свой вкус, внеси скриптом изменения в дневник, как описано в пунктах 4.1 - 4.3, проверь изменения в браузере.
