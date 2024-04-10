@@ -1,6 +1,8 @@
 from random import choice
 from datacenter.models import Mark, Chastisement, Commendation, Lesson, \
     Schoolkid
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
+from django.db.models import F
 
 
 COMMENDATIONS = ('Молодец!', 'Отлично!', 'Хорошо!', 'Гораздо лучше!',
@@ -19,17 +21,9 @@ COMMENDATIONS = ('Молодец!', 'Отлично!', 'Хорошо!', 'Гор�
 
 
 def fix_marks(schoolkid):
-    bad_marks = Mark.objects.filter(schoolkid=schoolkid, points__in=[2, 3])
-    if bad_marks:
-        print(f'Найденных плохих оценок: {len(bad_marks)}')
-    else:
-        print('Не нашёл плохих оценок у этого ученика, всё чисто ;)')
-        return
-    for mark in (2, 3):
-        good_mark = mark + 2
-        corrections = Mark.objects.filter(schoolkid=schoolkid,
-                                          points=mark).update(points=good_mark)
-        print(f'Исправил {corrections} оценок "{mark}" на "{good_mark}"')
+    corrections = Mark.objects.filter(schoolkid=schoolkid, points__in=[2, 3]).\
+        update(points=F('points') + 2)
+    print(f'Исправил {corrections} оценок')
 
 
 def remove_chastisements(schoolkid):
@@ -71,41 +65,18 @@ def add_commendation(schoolkid, subject=None):
     print(f'Создал похвалу для этого ученика на уроке {lesson}, {lesson.date}')
 
 
-def find_schoolkid(fullname):
+def find_schoolkid(full_name):
     """Ищет ученика по фамилии, имени, отчеству, или по некоторым из них"""
-    fullname = fullname.strip()
-    while '  ' in fullname:
-        fullname = fullname.replace('  ', ' ')
-    names = fullname.split(' ')
+    full_name = full_name.strip()
+    while '  ' in full_name:
+        full_name = full_name.replace('  ', ' ')
+    names = full_name.split(' ')
     names = tuple(name.capitalize() for name in names)
-    if any(Schoolkid.objects.filter(full_name__contains=name)
-           for name in names):
-        found_schoolkids = Schoolkid.objects.all()
-        for name in names:
-            if found_schoolkids.filter(full_name__contains=name):
-                found_schoolkids = \
-                    found_schoolkids.filter(full_name__contains=name)
-    else:
-        found_schoolkids = ()
-    if not found_schoolkids:
-        print(f'Не нашёл ни одного ученика с полным именем {fullname}.')
-        partial_matches = tuple(
-            Schoolkid.objects.filter(full_name__contains=name) for
-            name in names if Schoolkid.objects.filter(full_name__contains=name)
-        )
-        if any(partial_matches):
-            print('Возможно, ошибка в данных. Нашёл частичные совпадения:')
-            for match in partial_matches:
-                print(*match, sep='\n')
-        else:
-            print('Не нашёл совпадений по таким данным')
-        print('Запусти скрипт заново с правильными именами')
-        return
-    if len(found_schoolkids) > 1:
-        print('Нашёл несколько учеников с такими данными:')
-        print(*found_schoolkids, sep='\n')
-        print('Запусти скрипт заново с правильными именами')
-        return
-    else:
-        print(f'Нашёл ученика: {found_schoolkids[0]}')
-        return found_schoolkids[0]
+    full_name = ' '.join(names)
+
+    try:
+        return Schoolkid.objects.get(full_name=full_name)
+    except ObjectDoesNotExist:
+        print('Ученик с таким именем не найден')
+    except MultipleObjectsReturned:
+        print('Найдено несколько учеников с такими данными')
